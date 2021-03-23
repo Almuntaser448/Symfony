@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% for facture in factures %}
+ <p> {{facture.idv.caract}}</p>
+  <img src="{{ asset ('uploads/Photos/' ~  facture.idv.photo)}}" alt="">
+(<small>{{facture.dateD | date('d/m/Y "á" H:i')}}</small>)
+{% if facture.dateF == null %}
+(<small> le location  est mensualisée </small>)
+
+{% else %}
+(<small>{{facture.dateF | date('d/m/Y "á" H:i')}}</small>)
+{% endif %}
+}
+
+{% endfor %}
+{% endblock %}

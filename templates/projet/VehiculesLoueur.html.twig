@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon stock des voitures!{% endblock %}
+
+{% block body %}
+    <section class="articles">
+        {% for voiture in voitures %}
+            <voiture>
+                <div class="content">
+                
+                <img src="{{ asset ('uploads/Photos/' ~ voiture.photo)}}" alt="">
+                <p> la type de voiture est {{voiture.type}}</p>
+                <p> il y a {{voiture.nb}} voitures en stock</p>
+                
+                {% if voiture.location >0 %}
+                    <p> l'etat de location de voiture est {{voiture.location}}</p>
+                    {% else %}
+                   <p> l’id d’entreprise qui loue cette voiture est {{voiture.location}}</p>
+                {% endif %}
+                <p> les caractéristiques de voitures est {{voiture.caract}}</p>
+                </div>
+            </voiture>
+        {% endfor %}
+    </section>
+{% endblock %}

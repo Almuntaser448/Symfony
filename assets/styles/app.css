@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(0, 0, 0);
+  }
+  .img {
+    border: 1px solid rgb(38, 39, 43);
+    border-radius: 4px;
+    padding: 5px;
+    width: 300px;
+  } 
+  .p{
+      color: white;
+  }
+  

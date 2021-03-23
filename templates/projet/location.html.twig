@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if voitures|length != 0 %}
+{% set counter= 0 %}
+{% for voiture in voitures %}
+  <p>{{voiture.caract}}</p>
+  <img src="{{ asset ('uploads/Photos/' ~ voiture.photo)}}" alt="">
+{% endfor %}
+{% for child in form %}
+  {{ form_row (child) }}
+{% endfor %}
+{% endif %}
+<button type="submit" class=" btn btn-priamary">Fin?
+</button>
+{% endblock %}

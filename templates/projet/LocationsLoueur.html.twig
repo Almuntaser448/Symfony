@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for facture in factures %}
+        <img src="{{ asset ('uploads/Photos/' ~ facture.idv.photo)}}" alt="">
+        <p> {{facture.idv.caract}}</p>
+        (<small>{{facture.dateD | date('d/m/Y "á" H:i')}}</small>)
+        {{% if facture.dateF == null %}
+            (<small> le location  est mensualisée </small>)
+        {% else %}
+            (<small>{{facture.dateF | date('d/m/Y "á" H:i')}}</small>)
+        {% endif %}
+        }
+        <p> avec une reglement de {{facture.valeur}}</p>
+        <p>et une etat de regelment de  {{facture.etat}}</p>
+        <p> est louer par l entreprise {{facture.ide.nom}}</p>
+    {% endfor %}
+{% endblock %}

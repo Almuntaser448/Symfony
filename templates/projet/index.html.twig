@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitures Pour louer!{% endblock %}
+
+{% block body %}
+<section class="articles">
+{% for voiture in voitures %}
+    
+
+<voiture>
+    <div class="content">
+  <img src="{{ asset ('uploads/Photos/' ~  voiture.photo)}}" alt="">
+       <p> {{ voiture.caract}}</p>
+    </div>
+</voiture>
+{% endfor %}
+</section>
+{% endblock %}

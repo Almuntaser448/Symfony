@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% for facture in factures %}
+    <p>le vehicule</p>
+    <img src="{{ asset ('uploads/Photos/' ~ facture.idv.photo)}}" alt="">
+    <p> les caractéristiques sont{{facture.idv.caract}}</p>
+     <p> de type {{facture.idv.type}}</p>
+      <p> il y a {{facture.idv.nb}} en stock</p>
+     <p> la date de debut est {{facture.dateD}}</p>
+     {% if  facture.dateF.diff("now"|date("m/d/Y")) < 0 %}
+     <p>la location est mensualisée </p>
+    {% else %}
+    <p>la location finir le {{facture.dateF}}</p>
+     {% endif %}
+      
+      <p> la motant a regler par mois est {{facture.valeur}}</p>
+      {% if facture.dateF.diff(facture.dateD).days > 30 %}
+        <p> la location est plus d'un mois donc il y a une 2 % de réduction </p>
+        {% if factures|length > 10 %}
+         <p> il y a aussi un réduction de 10 % car nombre de véhicules de la flotte est plus que 10 </p>
+         <p> la motant a regler est {{facture.valeur * facture.dateF.diff(facture.dateD)|date('M')  * 0.88}}</p>
+        {% else %}
+         <p> la motant a regler est {{facture.valeur * facture.dateF.diff(facture.dateD)|date('M') * 0.98}}</p>
+        {% endif %}
+       
+         {% else if factures|length > 10 %}
+             <p> il y a aussi un réduction de 10 % car nombre de véhicules de la flotte est plus que 10 </p>
+             <p> la motant a regler est {{facture.valeur * facture.dateF.diff(facture.dateD)|date('M') * 0.90}}</p>
+        {% else %}
+         <p> la motant a regler est {{facture.valeur * facture.dateF.diff(facture.dateD)|date('M')}}</p>
+      {% endif %}
+      
+      <p> l'etat de facture est {{facture.etat}}</p>
+    {% endfor %}
+{% endblock %}

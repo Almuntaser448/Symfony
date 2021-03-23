@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for client in clients %}
+    {{ set VoitureCalcule = 0 }}
+    {{ set ValeurCalcule = 0 }}
+    {% for facture in factures %}
+        {% if facture.ide == client.id %}
+            {{ VoitureCalcule += 1 }}
+            {{ ValeurCalcule += facture.valeur }}
+        {% endif %}      
+     {% endfor %}
+     <p>pour l'entreprise  {{client.nom}} il y a {{VoitureCalcule}} voitures louer soit un montent total de {{ValeurCalcule}} a regler</p>
+{% endfor %}
+{% endblock %}
